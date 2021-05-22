@@ -3,34 +3,34 @@ class Calculator{
   private String second;
   private String operator;
   
-  Calculator(String f,String s,String o){
-    first=f;
-    second=s;
-    operator=o;
+  Calculator(String firstNumber,String secondNumber,String operatorTaken){
+    first=firstNumber;
+    second=secondNumber;
+    operator=operatorTaken;
   }
   public void calculate(){
     
     try {
-        int f = Integer.parseInt(first);
-        int s = Integer.parseInt(second);
-        if ((f<1 | f>10)&(s<1 | s>10)){System.out.println("Калькулятор знает цифры только от 1 до 10");}
+        int firstNumber = Integer.parseInt(first);
+        int secondNumber = Integer.parseInt(second);
+        if ((firstNumber<1 | firstNumber>10)&(secondNumber<1 | secondNumber>10)){System.out.println("Калькулятор знает цифры только от 1 до 10");}
         else{
-          if (decision(f,operator,s) != -1){System.out.println(decision(f,operator,s));}
+          if (decision(firstNumber,operator,secondNumber) != -1){System.out.println(decision(firstNumber,operator,secondNumber));}
         else{System.out.println("Неизвестный оператор");}
         }
         
     
     } catch (NumberFormatException e) { 
       try{
-        int f=ParseRome(first);
-        int s=ParseRome(second);
-        if ((f<1 | f>10)&(s<1 | s>10)){System.out.println("Калькулятор знает цифры только от I до X");}
+        int firstNumber=ParseRome(first);
+        int secondNumber=ParseRome(second);
+        if ((firstNumber<1 | firstNumber>10)&(secondNumber<1 | secondNumber>10)){System.out.println("Калькулятор знает цифры только от I до X");}
         else{
-        if((f==-1) | (s==-1)){
+        if((firstNumber==-1) | (secondNumber==-1)){
           System.out.println("Неверный ввод числа");
         }
         else{
-          if (decision(f,operator,s) != -1){System.out.println(ReturnRome(decision(f,operator,s))); }
+          if (decision(firstNumber,operator,secondNumber) != -1){System.out.println(ReturnRome(decision(firstNumber,operator,secondNumber))); }
         else{System.out.println("Неизвестный оператор");}
           
         }}
@@ -55,21 +55,21 @@ class Calculator{
     return frst/secnd;
   };
 
-  private int decision(int f,String operator,int s){
+  private int decision(int firstNumber,String operator,int secondNumber){
     int ans=0;
     switch(operator){
              
             case "+": 
-                ans= summ(f,s);
+                ans= summ(firstNumber,secondNumber);
                 break;
             case "-": 
-                ans=subtr(f,s);
+                ans=subtr(firstNumber,secondNumber);
                 break;
             case "*": 
-                ans= multipl(f,s);
+                ans= multipl(firstNumber,secondNumber);
                 break;
             case "/": 
-                ans= divis(f,s);
+                ans= divis(firstNumber,secondNumber);
                 break;
             default:
                 ans= -1;
@@ -77,28 +77,28 @@ class Calculator{
     return ans;
 
   }
-  private int ParseRome(String r){
+  private int ParseRome(String romen){
     String[] arr = {"I", "II", "III", "IV", "V","VI","VII","VIII","IX","X"};
     for (int index = 0; index < arr.length; index++) {
-        if (arr[index].equals(r) )
+        if (arr[index].equals(romen) )
             return index+1;
     }
     return -1;
   }
-  private String ReturnRome(int r){
+  private String ReturnRome(int romen){
     
 
    try{
-     if (r<=0){
+     if (romen<=0){
        return "Нет ответа римской цифрой";
      }
       else{
         String[] ones = {"","I", "II", "III", "IV", "V","VI","VII","VIII","IX","X"};
         String[] tens = {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
         String[] hunds = {"","C","CC"};
-        String h = hunds[r / 100 % 10];
-        String te = tens[r / 10 % 10];
-        String o =  ones[r % 10];
+        String h = hunds[romen / 100 % 10];
+        String te = tens[romen / 10 % 10];
+        String o =  ones[romen % 10];
      return h+te+o;}
     }
    catch(Exception ex){
