@@ -7,8 +7,8 @@ class Main {
       String str = reader.readLine();
       PrepareParser pp=new PrepareParser(str);
       if(pp.getFirst()!=null){
-        Calc c=new Calc(pp.getFirst(),pp.getSecond(),pp.getOperator());
-      c.calculator();
+        Calculator c=new Calculator(pp.getFirst(),pp.getSecond(),pp.getOperator());
+      c.calculate();
       }
       
     }

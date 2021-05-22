@@ -1,8 +1,8 @@
-class PrepareParser{
+class Prepare{
   private String first;
   private String second;
   private String operator;
-  PrepareParser(String s){
+  Prepare(String s){
     try{String[] words = s.split(" ");
     if (words.length==3){
       first=words[0];

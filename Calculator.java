@@ -1,14 +1,14 @@
-class Calc{
+class Calculator{
   private String first;
   private String second;
   private String operator;
   
-  Calc(String f,String s,String o){
+  Calculator(String f,String s,String o){
     first=f;
     second=s;
     operator=o;
   }
-  public void calculator(){
+  public void calculate(){
     
     try {
         int f = Integer.parseInt(first);
